@@ -42,8 +42,14 @@ Styleguide 0.13.2
 */
 
 .page__body {
+    -moz-transition: transform $speed $easing;
+    -o-transition: transform $speed $easing;
+    -webkit-transition: -webkit-transform $speed $easing;
     transition: transform $speed $easing;
+    -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
     -webkit-perspective: 1000;
 }
 
@@ -84,10 +90,19 @@ Styleguide 0.13.3
     right: 0;
     background-color: $menu-block--bgcolor;
     color: #fff;
+
+    -moz-transition: transform $speed $easing;
+    -o-transition: transform $speed $easing;
+    -webkit-transition: -webkit-transform $speed $easing;
     transition: transform $speed $easing;
-    z-index: 1;
+
+    -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
     -webkit-perspective: 1000;
+
+    z-index: 1;
     visibility: hidden;
 
     &--top {
