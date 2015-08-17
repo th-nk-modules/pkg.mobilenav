@@ -110,6 +110,10 @@ Styleguide 0.13.3
         height: $menu-size;
         top: 0;
         bottom: auto;
+            -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
         transform: translateY(-100%);
         border-bottom: $menu-block--outerborder;
     }
@@ -119,6 +123,10 @@ Styleguide 0.13.3
         width: $menu-size;
         right: 0;
         left: auto;
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
         transform: translateX(100%);
         border-left: $menu-block--outerborder;
     }
@@ -128,6 +136,10 @@ Styleguide 0.13.3
         height: $menu-size;
         bottom: 0;
         top: auto;
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        -webkit-transform: translateY(100%);
         transform: translateY(100%);
         border-top: $menu-block--outerborder;
     }
@@ -137,6 +149,10 @@ Styleguide 0.13.3
         width: $menu-size;
         left: 0;
         right: auto;
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
         border-right: $menu-block--outerborder;
     }
@@ -175,6 +191,10 @@ Styleguide 0.13.4
     &--slide-top,
     &--push-top {
         .page__nav--top {
+            -moz-transform: translateX(0) translateY(0);
+            -ms-transform: translateX(0) translateY(0);
+            -o-transform: translateX(0) translateY(0);
+            -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
         }
     }
@@ -182,6 +202,10 @@ Styleguide 0.13.4
     &--slide-right,
     &--push-right {
         .page__nav--right {
+            -moz-transform: translateX(0) translateY(0);
+            -ms-transform: translateX(0) translateY(0);
+            -o-transform: translateX(0) translateY(0);
+            -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
         }
     }
@@ -189,6 +213,10 @@ Styleguide 0.13.4
     &--slide-bottom,
     &--push-bottom {
         .page__nav--bottom {
+            -moz-transform: translateX(0) translateY(0);
+            -ms-transform: translateX(0) translateY(0);
+            -o-transform: translateX(0) translateY(0);
+            -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
         }
     }
@@ -196,6 +224,10 @@ Styleguide 0.13.4
     &--slide-left,
     &--push-left {
         .page__nav--left {
+            -moz-transform: translateX(0) translateY(0);
+            -ms-transform: translateX(0) translateY(0);
+            -o-transform: translateX(0) translateY(0);
+            -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
         }
     }
