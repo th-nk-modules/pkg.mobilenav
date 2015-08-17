@@ -1,0 +1,216 @@
+/*
+Mobile Nav
+
+2 styles of menu are available.  A push menu will push the page content as the menu opens.  A slide menu will appear over the top.
+
+Styleguide 0.13
+*/
+
+$menu-block--bgcolor: #000;
+$menu-block--outerborder: none;
+
+$easing: ease-in-out;
+$speed: 0.5s;
+
+$menu-size: 70%;
+
+/*
+Page
+
+The page and page__body elements are needed for the navigation to work correctly. NOTE: It may be wise to make this a default for mobile and desktop.
+
+Markup:
+<div class='page'><div>
+
+Styleguide 0.13.1
+*/
+
+.page {
+    width:100%;
+    overflow:hidden;
+}
+
+/*
+Page Body
+
+The page__body element houses all of our visible content including headers and footers.
+
+Markup:
+<div class='page__body'><div>
+
+Styleguide 0.13.2
+*/
+
+.page__body {
+    transition: transform $speed $easing;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+
+/*
+Page Nav
+
+The mobile navigation element.  Can be positioned and revealed as required using the data attributes shown below.  On page load the navigation is defaulted as invisible.  This is to ensure no transitions are seen prior to the menu being requested.  The javascript applies a .page__nav--ready class once the menu is positioned correctly.
+
+Markup:
+<nav role="navigation" class="page__nav" data-position="right" data-reveal-type="push">
+    <ul class="nav-menu">
+        <li class="nav-menu__item">
+            <a href="">Home</a>
+        </li>
+        <li class="nav-menu__item">
+            <a href="">News</a>
+        </li>
+        <li class="nav-menu__item">
+            <a href="">Media</a>
+        </li>
+        <li class="nav-menu__item">
+            <a href="">About</a>
+        </li>
+    </ul>
+    <button class="page__nav-close">Close</button>
+</nav>
+
+
+Styleguide 0.13.3
+*/
+
+.page__nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $menu-block--bgcolor;
+    color: #fff;
+    transition: transform $speed $easing;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    visibility: hidden;
+
+    &--top {
+        width: 100%;
+        height: $menu-size;
+        top: 0;
+        bottom: auto;
+        transform: translateY(-100%);
+        border-bottom: $menu-block--outerborder;
+    }
+
+    &--right {
+        height: 100%;
+        width: $menu-size;
+        right: 0;
+        left: auto;
+        transform: translateX(100%);
+        border-left: $menu-block--outerborder;
+    }
+
+    &--bottom {
+        width: 100%;
+        height: $menu-size;
+        bottom: 0;
+        top: auto;
+        transform: translateY(100%);
+        border-top: $menu-block--outerborder;
+    }
+
+    &--left {
+        height: 100%;
+        width: $menu-size;
+        left: 0;
+        right: auto;
+        transform: translateX(-100%);
+        border-right: $menu-block--outerborder;
+    }
+
+    
+}
+
+.page__nav--ready {
+    visibility: visible;
+}
+
+
+
+/*
+Showing a menu
+
+Display a particular menu using one of the following classes - the MobileNav js class will dynamically add the correct class depending on the navigation element being shown.  Currently added to the .page wrapping element.
+
+push-top            - show push menu top
+push-right          - show push menu right
+push-bottom         - show push menu bototm
+push-left           - show push menu left
+slide-top           - show slide menu top
+slide-right         - show slide menu right
+slide-bottom        - show slide menu bottom
+slide-left          - show slide menu left
+
+Markup:
+<div class="page show-menu--{$modifiers}"></div>
+
+Styleguide 0.13.4
+*/
+
+
+.show-menu {
+    &--slide-top,
+    &--push-top {
+        .page__nav--top {
+            transform: translateX(0) translateY(0);
+        }
+    }
+
+    &--slide-right,
+    &--push-right {
+        .page__nav--right {
+            transform: translateX(0) translateY(0);
+        }
+    }
+
+    &--slide-bottom,
+    &--push-bottom {
+        .page__nav--bottom {
+            transform: translateX(0) translateY(0);
+        }
+    }
+
+    &--slide-left,
+    &--push-left {
+        .page__nav--left {
+            transform: translateX(0) translateY(0);
+        }
+    }
+}
+
+
+
+/*
+Basic Menu Styles
+
+Styleguide 0.13.5
+*/
+
+.nav-menu {
+    list-style-type: none;
+    padding:0;
+    width:100%;
+    margin:2em 0;
+}
+
+.nav-menu__item {
+    list-style-type: none;
+    margin:0;
+    padding:0.5em 0;
+}
+
+.nav-menu__link {
+    color:#fff;
+    font-size:1.1em;
+    text-align:center;
+    display:block;
+    width:100%;
+}
