@@ -1,5 +1,5 @@
 import * as dom from '../../../lib/components/js.dom/dom';
-
+import * as helpers from '../../../lib/components/js.helpers/helpers';
 /**
  * Creates a new mobile nav instance
  * @class MobileNav
