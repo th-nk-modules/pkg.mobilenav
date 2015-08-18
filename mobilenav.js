@@ -22,9 +22,6 @@ class MobileNav {
 		this.pageBody = document.getElementsByClassName('page__body')[0];
 		this.page = document.getElementsByClassName('page')[0];
 		this.toggleElements = document.getElementsByClassName('page__nav-show');
-
-		/* initialise local storage */
-		localStorage.setItem('currentNavigation', null)
 		
 		this.setClass()
 			.getSize()
@@ -39,8 +36,6 @@ class MobileNav {
 			this.ready = true;
 			dom.addClass(this.element, 'page__nav--ready');
 		}		
-		
-		this.setState();
 
 		if (this.type == 'push') {
 			this.setBodyTransform();
@@ -55,8 +50,8 @@ class MobileNav {
      * @memberOf MobileNav
     */
 	hide() {	
-		this.resetBodyTransform();	
-		dom.removeClass(this.page, 'show-menu' + '--' + localStorage.currentNavigation);
+		this.resetBodyTransform();
+		dom.removeClass(this.page, 'show-menu' + '--' + this.string);
 		return this;
 	}
 	/**
@@ -118,17 +113,7 @@ class MobileNav {
 		}
 		return this;
 	}
-	/**
-     * Menu state is stored in local storage - this allows one menu to close another before opening.
-     * @memberOf MobileNav
-    */
-	setState() {
-		if (localStorage.currentNavigation !== null && localStorage.currentNavigation !== this.string) {
-			dom.removeClass(document.body,'show-menu--' + localStorage.currentNavigation)
-			localStorage.setItem('currentNavigation', this.string);
-		}
-		return this;
-	}
+	
 	/**
      * Sets the page body transform
      * @memberOf MobileNav
