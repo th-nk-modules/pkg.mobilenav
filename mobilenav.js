@@ -1,10 +1,11 @@
 import * as dom from '../../../lib/components/js.dom/dom';
 import * as helpers from '../../../lib/components/js.helpers/helpers';
 /**
- * Creates a new mobile nav instance
- * @class MobileNav
- * @classdesc Controller for mobile push and slide menus
- */
+* Creates a new mobile nav instance
+* @class MobileNav
+* @classdesc Controller for mobile push and slide menus
+* @global
+*/
 class MobileNav {
 	/**
      * @constructor
@@ -28,9 +29,10 @@ class MobileNav {
 			.setEvents();
 	}	
 	/**
-     * Show the menu
-     * @memberOf MobileNav
-    */
+	* Show the menu
+	* @memberOf MobileNav
+	* @function
+	*/
 	show() {
 		if (!this.ready){
 			this.ready = true;
@@ -46,8 +48,9 @@ class MobileNav {
 		return this;
 	}
 	/**
-     * Hide the menu
-     * @memberOf MobileNav
+	* Hide the menu
+	* @memberOf MobileNav
+	* @function
     */
 	hide() {	
 		this.resetBodyTransform();
@@ -55,16 +58,18 @@ class MobileNav {
 		return this;
 	}
 	/**
-     * Add the appropriate class to the navigation element.
-     * @memberOf MobileNav
+	* Add the appropriate class to the navigation element.
+	* @memberOf MobileNav
+	* @function
     */
 	setClass() {
 		dom.addClass(this.element, 'page__nav--' + this.position);
 		return this;		
 	}
 	/**
-     * The size is needed so we know how far to translate the page__body when using a push reveal.
-     * @memberOf MobileNav
+	* The size is needed so we know how far to translate the page__body when using a push reveal.
+	* @memberOf MobileNav
+	* @function
     */
 	getSize() {
 		this.width = this.element.offsetWidth;
@@ -87,8 +92,9 @@ class MobileNav {
 		return this;
 	}
 	/**
-     * Add event listeners for buttons on the page - may take a further look at this and make it more efficient.
-     * @memberOf MobileNav
+	* Add event listeners for buttons on the page - may take a further look at this and make it more efficient.
+	* @memberOf MobileNav
+	* @function
     */
 	setEvents() {
 
@@ -115,16 +121,18 @@ class MobileNav {
 	}
 	
 	/**
-     * Sets the page body transform
-     * @memberOf MobileNav
+	* Sets the page body transform
+	* @memberOf MobileNav
+	* @function
     */
 	setBodyTransform() {
 		helpers.setTransformValue(this.pageBody.style, this.transform_value);
 		return this;
 	}
 	/**
-     * Removes the page body transform
-     * @memberOf MobileNav
+	* Removes the page body transform
+	* @memberOf MobileNav
+	* @function
     */
 	resetBodyTransform() {
 		helpers.setTransformValue(this.pageBody.style, 'translateX(0px) translateY(0px)');
