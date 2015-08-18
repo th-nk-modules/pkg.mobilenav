@@ -119,15 +119,15 @@ class MobileNav {
      * @memberOf MobileNav
     */
 	setBodyTransform() {
-		this.pageBody.style.webkitTransform = this.transform_value;
+		helpers.setTransformValue(this.pageBody.style, this.transform_value);
 		return this;
 	}
 	/**
      * Removes the page body transform
      * @memberOf MobileNav
     */
-	resetBodyTransform() {		
-		this.pageBody.style.webkitTransform = 'translateX(0px) translateY(0px)';
+	resetBodyTransform() {
+		helpers.setTransformValue(this.pageBody.style, 'translateX(0px) translateY(0px)');
 		return this;
 	}
 
