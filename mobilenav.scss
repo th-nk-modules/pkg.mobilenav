@@ -6,8 +6,8 @@ MobileNav
 Styleguide 2.3
 */
 
-$menu-block--bgcolor: #000;
-$menu-block--outerborder: none;
+$page-nav--bgcolor: #000;
+$page-nav--outerborder: none;
 
 $easing: ease-in-out;
 $speed: 0.5s;
@@ -98,7 +98,7 @@ Styleguide 2.3.3
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: $menu-block--bgcolor;
+    background-color: $page-nav--bgcolor;
     color: #fff;
 
     -moz-transition: transform $speed $easing;
@@ -128,7 +128,7 @@ Styleguide 2.3.3
         -o-transform: translateY(-100%);
         -webkit-transform: translateY(-100%);
         transform: translateY(-100%);
-        border-bottom: $menu-block--outerborder;
+        border-bottom: $page-nav--outerborder;
     }
 
     &--right {
@@ -141,7 +141,7 @@ Styleguide 2.3.3
         -o-transform: translateX(100%);
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
-        border-left: $menu-block--outerborder;
+        border-left: $page-nav--outerborder;
     }
 
     &--bottom {
@@ -154,7 +154,7 @@ Styleguide 2.3.3
         -o-transform: translateY(100%);
         -webkit-transform: translateY(100%);
         transform: translateY(100%);
-        border-top: $menu-block--outerborder;
+        border-top: $page-nav--outerborder;
     }
 
     &--left {
@@ -167,7 +167,7 @@ Styleguide 2.3.3
         -o-transform: translateX(-100%);
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
-        border-right: $menu-block--outerborder;
+        border-right: $page-nav--outerborder;
     }
 
     
