@@ -17,10 +17,11 @@ Current issues
 
 
 /**
- * Creates a new mobile nav instance
- * @class MobileNav
- * @classdesc Controller for mobile push and slide menus
- */
+* Creates a new mobile nav instance
+* @class MobileNav
+* @classdesc Controller for mobile push and slide menus
+* @global
+*/
 class MobileNav {
 	/**
      * @constructor
@@ -43,9 +44,10 @@ class MobileNav {
 			.setEvents();
 	}	
 	/**
-     * Show the menu
-     * @memberOf MobileNav
-    */
+	* Show the menu
+	* @memberOf MobileNav
+	* @function
+	*/
 	show() {
 
 		dom.addClass(this.element, 'page__nav--ready');
@@ -62,8 +64,9 @@ class MobileNav {
 		return this;
 	}
 	/**
-     * Hide the menu
-     * @memberOf MobileNav
+	* Hide the menu
+	* @memberOf MobileNav
+	* @function
     */
 	hide() {	
 		
@@ -80,16 +83,18 @@ class MobileNav {
 		return this;
 	}
 	/**
-     * Add the appropriate class to the navigation element.
-     * @memberOf MobileNav
+	* Add the appropriate class to the navigation element.
+	* @memberOf MobileNav
+	* @function
     */
 	setClass() {
 		dom.addClass(this.element, 'page__nav--' + this.position);
 		return this;		
 	}
 	/**
-     * The size is needed so we know how far to translate the page__body when using a push reveal.
-     * @memberOf MobileNav
+	* The size is needed so we know how far to translate the page__body when using a push reveal.
+	* @memberOf MobileNav
+	* @function
     */
 	getSize() {
 		this.width = this.element.offsetWidth;
@@ -112,8 +117,9 @@ class MobileNav {
 		return this;
 	}
 	/**
-     * Add event listeners for buttons on the page - may take a further look at this and make it more efficient.
-     * @memberOf MobileNav
+	* Add event listeners for buttons on the page - may take a further look at this and make it more efficient.
+	* @memberOf MobileNav
+	* @function
     */
 	setEvents() {
 
@@ -138,8 +144,6 @@ class MobileNav {
 		}
 		return this;
 	}
-	
-
 
 }
 
