@@ -12,7 +12,7 @@ $menu-block--outerborder: none;
 $easing: ease-in-out;
 $speed: 0.5s;
 
-$menu-size: 70%;
+$menu-size: 90%;
 
 /*
 Page
@@ -24,10 +24,27 @@ Markup:
 
 Styleguide 0.13.1
 */
+h1 {
+    margin-top:0;
+    padding-top:0.6em
+}
+
+html, body {
+    height:100%;
+   
+}
 
 .page {
     width:100%;
-    overflow:hidden;
+    -moz-transition: transform $speed $easing;
+    -o-transition: transform $speed $easing;
+    -webkit-transition: -webkit-transform $speed $easing;
+    transition: transform $speed $easing;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+
+    position:relative;
 }
 
 /*
@@ -42,15 +59,8 @@ Styleguide 0.13.2
 */
 
 .page__body {
-    -moz-transition: transform $speed $easing;
-    -o-transition: transform $speed $easing;
-    -webkit-transition: -webkit-transform $speed $easing;
-    transition: transform $speed $easing;
-    -moz-backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-perspective: 1000;
-    -ms-perspective: 1000;
-    -webkit-perspective: 1000;
+   height:100%;
+
 }
 
 /*
@@ -84,10 +94,10 @@ Styleguide 0.13.3
 .page__nav {
     display: block;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
     background-color: $menu-block--bgcolor;
     color: #fff;
 
@@ -105,12 +115,15 @@ Styleguide 0.13.3
     z-index: 1;
     visibility: hidden;
 
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+
     &--top {
         width: 100%;
         height: $menu-size;
         top: 0;
         bottom: auto;
-            -moz-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
         -ms-transform: translateY(-100%);
         -o-transform: translateY(-100%);
         -webkit-transform: translateY(-100%);
@@ -164,6 +177,14 @@ Styleguide 0.13.3
     visibility: visible;
 }
 
+body.restrict-height{
+    height:100%;
+    overflow:hidden;
+    
+    .page {
+        height:100%;
+    }
+}
 
 
 /*
@@ -188,48 +209,132 @@ Styleguide 0.13.4
 
 
 .show-menu {
-    &--slide-top,
-    &--push-top {
+    &--slide-top {
         .page__nav--top {
             -moz-transform: translateX(0) translateY(0);
             -ms-transform: translateX(0) translateY(0);
             -o-transform: translateX(0) translateY(0);
             -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
+            z-index: 2;
+        }
+
+        .page__body {
+            pointer-events:none;
         }
     }
 
-    &--slide-right,
-    &--push-right {
+    &--slide-right {
         .page__nav--right {
             -moz-transform: translateX(0) translateY(0);
             -ms-transform: translateX(0) translateY(0);
             -o-transform: translateX(0) translateY(0);
             -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
+            z-index: 2;
+
+
+        }
+
+        .page__body {
+            pointer-events:none;
         }
     }
 
-    &--slide-bottom,
-    &--push-bottom {
+    &--slide-bottom {
         .page__nav--bottom {
             -moz-transform: translateX(0) translateY(0);
             -ms-transform: translateX(0) translateY(0);
             -o-transform: translateX(0) translateY(0);
             -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
+            z-index: 2;
+        }
+
+        .page__body {
+            pointer-events:none;
         }
     }
 
-    &--slide-left,
-    &--push-left {
+    &--slide-left {
         .page__nav--left {
             -moz-transform: translateX(0) translateY(0);
             -ms-transform: translateX(0) translateY(0);
             -o-transform: translateX(0) translateY(0);
             -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
+            z-index: 2;
         }
+
+        .page__body {
+            pointer-events:none;
+        }
+    }
+
+    &--push-right {           
+
+            -moz-transform: translateX(-$menu-size) translateY(0);
+            -ms-transform: translateX(-$menu-size) translateY(0);
+            -o-transform: translateX(-$menu-size) translateY(0);
+            -webkit-transform: translateX(-$menu-size) translateY(0);
+            transform: translateX(-$menu-size) translateY(0);
+
+            .page__nav--right[data-reveal-type='push'] {
+                z-index: 2;
+            } 
+
+            .page__body {
+                pointer-events:none;
+            }
+    }
+
+     &--push-left {
+            -moz-transform: translateX($menu-size) translateY(0);
+            -ms-transform: translateX($menu-size) translateY(0);
+            -o-transform: translateX($menu-size) translateY(0);
+            -webkit-transform: translateX($menu-size) translateY(0);
+            transform: translateX($menu-size) translateY(0);  
+
+            .page__nav--left[data-reveal-type='push'] {
+                z-index: 2;
+            } 
+
+            .page__body {
+                pointer-events:none;
+            }
+            
+    }
+
+    &--push-top {
+            -moz-transform: translateX(0) translateY($menu-size);
+            -ms-transform: translateX(0) translateY($menu-size);
+            -o-transform: translateX(0) translateY($menu-size);
+            -webkit-transform: translateX(0) translateY($menu-size);
+            transform: translateX(0) translateY($menu-size);
+
+            .page__nav--top[data-reveal-type='push'] {
+                z-index: 2;
+            }
+
+            .page__body {
+                pointer-events:none;
+            }
+    }
+
+     &--push-bottom {
+            -moz-transform: translateX(0) translateY(-$menu-size);
+            -ms-transform: translateX(0) translateY(-$menu-size);
+            -o-transform: translateX(0) translateY(-$menu-size);
+            -webkit-transform: translateX(0) translateY(-$menu-size);
+            transform: translateX(0) translateY(-$menu-size);            
+
+            .page__nav--bottom[data-reveal-type='push'] {
+                z-index: 2;
+            }
+
+            .page__body {
+                pointer-events:none;
+            } 
     }
 }
 
@@ -240,6 +345,11 @@ Basic Menu Styles
 
 Styleguide 0.13.5
 */
+
+.navtest button {
+    padding:1em;
+    margin:1em 0.5em 1em 0;
+}
 
 .nav-menu {
     list-style-type: none;
