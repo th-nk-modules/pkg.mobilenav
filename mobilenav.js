@@ -40,7 +40,6 @@ class MobileNav {
 		this.toggleElements = document.getElementsByClassName('page__nav-show');
 		
 		this.setClass()
-			.getSize()
 			.setEvents();
 	}	
 	/**
@@ -51,10 +50,7 @@ class MobileNav {
 	show() {
 
 		dom.addClass(this.element, 'page__nav--ready');
-
-			dom.addClass(document.body, 'restrict-height');
-	
-		
+		dom.addClass(document.body, 'restrict-height');		
 		
 		/* the setTimeout is needed to make sure .page height is 100% viewport when the menu is shown. */
 		setTimeout(() => {
@@ -90,31 +86,6 @@ class MobileNav {
 	setClass() {
 		dom.addClass(this.element, 'page__nav--' + this.position);
 		return this;		
-	}
-	/**
-	* The size is needed so we know how far to translate the page__body when using a push reveal.
-	* @memberOf MobileNav
-	* @function
-    */
-	getSize() {
-		this.width = this.element.offsetWidth;
-		this.height = this.element.offsetHeight;
-
-		this.transform_value = this.height;
-
-		if (this.position == 'top' || this.position == 'bottom') {
-			if (this.position == 'bottom') {
-				this.transform_value *= -1;
-			}
-			this.transform_value = 'translateY(' + this.transform_value + 'px) translateX(0)'
-		} else if (this.position == 'left' || this.position == 'right') {
-			this.transform_value = this.width;
-			if (this.position == 'right')  {
-				this.transform_value *= -1;
-			}
-			this.transform_value = 'translateY(0) translateX(' + this.transform_value + 'px)'
-		}
-		return this;
 	}
 	/**
 	* Add event listeners for buttons on the page - may take a further look at this and make it more efficient.

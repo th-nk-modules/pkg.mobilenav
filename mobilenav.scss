@@ -1,9 +1,9 @@
 /*
-Mobile Nav
+MobileNav
 
 2 styles of menu are available.  A push menu will push the page content as the menu opens.  A slide menu will appear over the top.
 
-Styleguide 0.13
+Styleguide 2.3
 */
 
 $menu-block--bgcolor: #000;
@@ -22,7 +22,7 @@ The page and page__body elements are needed for the navigation to work correctly
 Markup:
 <div class='page'><div>
 
-Styleguide 0.13.1
+Styleguide 2.3.1
 */
 h1 {
     margin-top:0;
@@ -55,7 +55,7 @@ The page__body element houses all of our visible content including headers and f
 Markup:
 <div class='page__body'><div>
 
-Styleguide 0.13.2
+Styleguide 2.3.2
 */
 
 .page__body {
@@ -88,7 +88,7 @@ Markup:
 </nav>
 
 
-Styleguide 0.13.3
+Styleguide 2.3.3
 */
 
 .page__nav {
@@ -204,7 +204,7 @@ slide-left          - show slide menu left
 Markup:
 <div class="page show-menu--{$modifiers}"></div>
 
-Styleguide 0.13.4
+Styleguide 2.3.4
 */
 
 
@@ -343,7 +343,7 @@ Styleguide 0.13.4
 /*
 Basic Menu Styles
 
-Styleguide 0.13.5
+Styleguide 2.3.5
 */
 
 .navtest button {
