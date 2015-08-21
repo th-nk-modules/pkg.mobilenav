@@ -32,9 +32,7 @@ class MobileNav {
 		this.position  = this.element.getAttribute('data-position');
 
 		this.string = this.type + '-' + this.position;
-		this.page = document.querySelectorAll('html /deep/ .page')[0];
-
-		console.log(this.page)
+		this.page = document.querySelectorAll('.page')[0];
 
 		this.triggerBtns = triggerBtns;
 		
