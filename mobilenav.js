@@ -13,9 +13,6 @@ Current issues
 
 **/
 
-
-
-
 /**
 * Creates a new mobile nav instance
 * @class MobileNav
@@ -27,28 +24,30 @@ class MobileNav {
      * @constructor
      * @param {HTMLElement} navElement generally the page__nav element
     */
-	constructor(navElement) {
+	constructor(navElement, triggerBtns) {
 		
 		this.element = navElement;
-
+	
 		this.type = this.element.getAttribute('data-reveal-type');
 		this.position  = this.element.getAttribute('data-position');
 
 		this.string = this.type + '-' + this.position;
-		this.page = document.getElementsByClassName('page')[0];
+		this.page = document.querySelectorAll('html /deep/ .page')[0];
 
-		this.toggleElements = document.getElementsByClassName('page__nav-show');
+		console.log(this.page)
+
+		this.triggerBtns = triggerBtns;
 		
 		this.setClass()
 			.setEvents();
 	}	
 	/**
 	* Show the menu
-	* @memberOf MobileNav
+	* @memberOf MobileNav 
 	* @function
 	*/
 	show() {
-
+ 	
 		dom.addClass(this.element, 'page__nav--ready');
 		dom.addClass(document.body, 'restrict-height');		
 		
@@ -73,7 +72,7 @@ class MobileNav {
 		/* remove .page height restiction */
 		setTimeout(() => {
 			dom.removeClass(this.element, 'page__nav--ready');
-			dom.removeClass(document.body, 'restrict-height')
+			dom.removeClass(document.body, 'restrict-height');
 		}, dur)
 
 		return this;
@@ -93,20 +92,20 @@ class MobileNav {
 	* @function
     */
 	setEvents() {
-
-		for (let i = 0; i < this.toggleElements.length; i++){
-			let el = this.toggleElements[i];
-			let type = el.getAttribute('data-type');
+		
+		for (let i = 0; i < this.triggerBtns.length; i++){
+			let el = this.triggerBtns[i];			
+			let type = el.getAttribute('data-reveal-type');
 			let position = el.getAttribute('data-position');
 			
 			if (position == this.position && type == this.type){
-				this.toggleElements[i].addEventListener('click', e => {
+				el.addEventListener('click', e => {
 					this.show();
 				});
 			}
 		}
 
-		let closeBtn = this.element.getElementsByClassName('page__nav-close');		
+		let closeBtn = this.element.querySelectorAll('.page__nav-close');
 
 		if (closeBtn.length > 0){			
 			closeBtn[0].addEventListener('click', e => {

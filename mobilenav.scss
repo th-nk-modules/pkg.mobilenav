@@ -3,35 +3,31 @@ MobileNav
 
 2 styles of menu are available.  A push menu will push the page content as the menu opens.  A slide menu will appear over the top.
 
-Styleguide 2.3
+As you can see in the example below a wrapping element is needed (.page) to make this work.  Transforms are applied to this element when using push navigation.
+
+Styleguide 2.2
 */
 
-$page-nav--bgcolor: #000;
-$page-nav--outerborder: none;
 
 $easing: ease-in-out;
 $speed: 0.5s;
 
 $menu-size: 90%;
 
-/*
-Page
+$nav-menu-padding:                      2em 0;
+$nav-menu-item-padding:                 1em 0;
+$nav-menu-font:                         "";
+$nav-menu-fontcolor:                    #fff;
+$nav-menu-fontcolor-active:             #f9f;
+$nav-menu-fontcolor-hover:              #ff9;
 
-The page and page__body elements are needed for the navigation to work correctly. NOTE: It may be wise to make this a default for mobile and desktop.
-
-Markup:
-<div class='page'><div>
-
-Styleguide 2.3.1
-*/
 h1 {
     margin-top:0;
     padding-top:0.6em
 }
 
 html, body {
-    height:100%;
-   
+    height:100%;   
 }
 
 .page {
@@ -47,48 +43,45 @@ html, body {
     position:relative;
 }
 
-/*
-Page Body
-
-The page__body element houses all of our visible content including headers and footers.
-
-Markup:
-<div class='page__body'><div>
-
-Styleguide 2.3.2
-*/
-
 .page__body {
-   height:100%;
-
+    height:100%;
 }
 
 /*
 Page Nav
 
-The mobile navigation element.  Can be positioned and revealed as required using the data attributes shown below.  On page load the navigation is defaulted as invisible.  This is to ensure no transitions are seen prior to the menu being requested.  The javascript applies a .page__nav--ready class once the menu is positioned correctly.
+The mobile navigation element.  Can be positioned and revealed as required using the data attributes shown below.  On page load the navigation is defaulted as invisible - the javascript applies a .page__nav--ready class once the menu is positioned correctly..  This is to ensure no transitions are seen prior to the menu being requested.  
+
+Triggers (.page__nav-show) can be created using the same data attributes as the navigation itself.
+
+NOTE: Click the expand link to view this in its full glory.  You can also view mobilenav-example.html on port 8080 for further examples (http://localhost:8080/mobilenav-example.html)
 
 Markup:
-<nav role="navigation" class="page__nav" data-position="right" data-reveal-type="push">
-    <ul class="nav-menu">
-        <li class="nav-menu__item">
-            <a href="">Home</a>
-        </li>
-        <li class="nav-menu__item">
-            <a href="">News</a>
-        </li>
-        <li class="nav-menu__item">
-            <a href="">Media</a>
-        </li>
-        <li class="nav-menu__item">
-            <a href="">About</a>
-        </li>
-    </ul>
-    <button class="page__nav-close">Close</button>
-</nav>
+<div class='page'>
+    <nav role="navigation" class="page__nav" data-position="right" data-reveal-type="push">
+        <button class="page__nav-close">Close</button>
+        <ul class="nav-menu">
+            <li class="nav-menu__item">
+                <a class="nav-menu__link" href="">Home</a>
+            </li>
+            <li class="nav-menu__item">
+                <a class="nav-menu__link" href="">News</a>
+            </li>
+            <li class="nav-menu__item">
+                <a class="nav-menu__link" href="">Media</a>
+            </li>
+            <li class="nav-menu__item">
+                <a class="nav-menu__link" href="">About</a>
+            </li>
+        </ul>        
+    </nav>
+    <div class='page__body'>
+        <h1>Page Content</h1>
+        <button class="page__nav-show" data-reveal-type="push" data-position="right">Push Right Menu</button>
+    </div>
+</div>
 
-
-Styleguide 2.3.3
+Styleguide 2.2.3
 */
 
 .page__nav {
@@ -98,7 +91,7 @@ Styleguide 2.3.3
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: $page-nav--bgcolor;
+
     color: #fff;
 
     -moz-transition: transform $speed $easing;
@@ -128,7 +121,7 @@ Styleguide 2.3.3
         -o-transform: translateY(-100%);
         -webkit-transform: translateY(-100%);
         transform: translateY(-100%);
-        border-bottom: $page-nav--outerborder;
+
     }
 
     &--right {
@@ -141,7 +134,7 @@ Styleguide 2.3.3
         -o-transform: translateX(100%);
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
-        border-left: $page-nav--outerborder;
+
     }
 
     &--bottom {
@@ -154,7 +147,7 @@ Styleguide 2.3.3
         -o-transform: translateY(100%);
         -webkit-transform: translateY(100%);
         transform: translateY(100%);
-        border-top: $page-nav--outerborder;
+
     }
 
     &--left {
@@ -167,11 +160,13 @@ Styleguide 2.3.3
         -o-transform: translateX(-100%);
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
-        border-right: $page-nav--outerborder;
+
     }
 
     
 }
+
+/* helper classes */
 
 .page__nav--ready {
     visibility: visible;
@@ -187,26 +182,7 @@ body.restrict-height{
 }
 
 
-/*
-Showing a menu
-
-Display a particular menu using one of the following classes - the MobileNav js class will dynamically add the correct class depending on the navigation element being shown.  Currently added to the .page wrapping element.
-
-push-top            - show push menu top
-push-right          - show push menu right
-push-bottom         - show push menu bototm
-push-left           - show push menu left
-slide-top           - show slide menu top
-slide-right         - show slide menu right
-slide-bottom        - show slide menu bottom
-slide-left          - show slide menu left
-
-Markup:
-<div class="page show-menu--{$modifiers}"></div>
-
-Styleguide 2.3.4
-*/
-
+/* no point showing an active state on page load - you can see the active state on the page nav demo */
 
 .show-menu {
     &--slide-top {
@@ -341,33 +317,61 @@ Styleguide 2.3.4
 
 
 /*
-Basic Menu Styles
+Basic Mobile Menu Styles
 
-Styleguide 2.3.5
+Markup:
+<ul class="nav-menu">
+    <li class="nav-menu__item">
+        <a class="nav-menu__link" href="">Home</a>
+    </li>
+    <li class="nav-menu__item">
+        <a class="nav-menu__link" href="">News</a>
+    </li>
+    <li class="nav-menu__item">
+        <a class="nav-menu__link" href="">Media</a>
+    </li>
+    <li class="nav-menu__item">
+        <a class="nav-menu__link" href="">About</a>
+    </li>
+</ul>       
+
+Styleguide 2.2.5
 */
 
-.navtest button {
-    padding:1em;
-    margin:1em 0.5em 1em 0;
-}
-
 .nav-menu {
-    list-style-type: none;
-    padding:0;
-    width:100%;
-    margin:2em 0;
+    background:                     #000;
+    list-style-type:                none;
+    padding:                        0;
+    width:                          100%;
+    height:                         100%;
+    padding:                        $nav-menu-padding;
+    font:                           $nav-menu-font;
 }
 
 .nav-menu__item {
     list-style-type: none;
     margin:0;
-    padding:0.5em 0;
+    padding:                        $nav-menu-item-padding;
 }
 
 .nav-menu__link {
-    color:#fff;
-    font-size:1.1em;
+    color:                          $nav-menu-fontcolor;
     text-align:center;
     display:block;
     width:100%;
+    text-decoration:                none;
 }
+
+.nav-menu__link:hover {
+    color:                          $nav-menu-fontcolor-hover;
+    text-decoration:                none;
+}
+
+.nav-menu__link:active {
+    color:                          $nav-menu-fontcolor-active;
+    text-decoration:                none;
+}
+
+
+
+
